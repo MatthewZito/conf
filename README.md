@@ -93,3 +93,4 @@ There's also the `apps` and `scripts` directories under `.bash_conf`, which hous
 Last, we have the `.templates` directory which houses:
 
 - dockerized dev environment - when launched, this will mount the present working directory as a temporary, linked volume
+- templates for bootstrapping project defaults (e.g. for an npm package) - these are used by the `bootstrap` command
