@@ -85,8 +85,11 @@ These configs are:
 - *interactive* settings for interactive mode; these are sourced on every session
 - *login* settings and configurations that need only be sourced upon login
 
-There's also an `apps` directory under `.bash_conf`, which houses app configs that are used by the functions in `cmd.bash`. These include:
+There's also the `apps` and `scripts` directories under `.bash_conf`, which house app configs that are used by the shell environment and scripts used by the functions in `cmd.bash`, respectively. The domain here is typically:
 
 - default configurations for various environments e.g. golang, npm / node, stack, et al
-- dockerized dev environment - when launched, this will mount the present working directory as a temporary, linked volume
 - scripts i.e. more complicated commands than can be crammed into `cmd.bash`
+
+Last, we have the `.templates` directory which houses:
+
+- dockerized dev environment - when launched, this will mount the present working directory as a temporary, linked volume

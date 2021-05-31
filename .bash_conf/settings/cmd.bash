@@ -65,7 +65,7 @@ blue_conn () {
 
 # launch a dockerized dev environment of pwd
 dockerize () {
-  docker_dir="$HOME/.bash_conf/docker/"
+  docker_dir="$HOME/.templates/docker"
   docker_tag='goldmund:dev'
 
   is_dev_extant="$(docker image ls -f reference=$docker_tag | awk '{ print $1":"$2 }' | grep $docker_tag)"
@@ -87,11 +87,15 @@ dockerize () {
   fi
 }
 
-# initialize a new npm pkg project
-npm_bootstrap () {
-  local script_loc="$HOME/.bash_conf/scripts/npm_bootstrap.bash"
+# initialize a new project of type $1
+bootstrap () {
+  local script_loc="$HOME/.bash_conf/scripts/bootstrap.bash"
 
-  bash $script_loc
+  if (( $# == 0 )); then
+    echo -e "[!] No arguments supplied\n"
+  else
+    bash $script_loc "$*"
+  fi
 }
 
 # set current branch to track remote (default: 'origin')

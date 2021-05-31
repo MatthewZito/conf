@@ -1,4 +1,4 @@
-set expandtab
+set noexpandtab
 set smarttab
 set shiftwidth=2
 set shiftround
