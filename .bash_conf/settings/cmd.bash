@@ -72,7 +72,7 @@ dockerize () {
 
   if [[ "$is_dev_extant" != "$docker_tag" ]]; then
     echo -e "[!] Containerized dev environment not extant; creating image...\n"
-    docker build -f "$docker_dir/Dockerfile" -t "$docker_tag" .
+    docker build -f "$docker_dir/Dockerfile.devenv" -t "$docker_tag" .
 
     if [[ $? -eq 0 ]]; then
       echo -e "[+] Image created\n"
