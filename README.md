@@ -2,7 +2,7 @@
 
 This directory houses configuration files for my personal Linux machine. I'll also share how you can do this in the following sections.
 
-## How to Properly Track Your Dotfiles With Git (no symlinked required)
+## How to Properly Track Your Dotfiles With Git (no symlinks required)
 
 I use a bare git repository for easy tracking - no symlinks necessary; here's how:
 
@@ -75,11 +75,11 @@ dotfiles checkout
 
 ## Better Bash Configurations
 
-I don't use `.bashrc` (or common alternatives), not in a traditional manner anyway. Using a single config for the many settings one can configure for bash is silly. Instead, my `.bashrc` sources from a special `.bash_conf` directory, which houses separate files for discrete bash configurations. I recommend any regular bash user do the same.
+I don't use `.bashrc` (or common alternatives), not in a traditional manner anyway. Using a single config for the many settings one can configure for bash is silly. Instead, my `.bashrc` sources from a special `.bash_conf` [directory](https://github.com/MatthewZito/dotfiles/tree/master/.bash_conf), which houses separate files for discrete bash configurations. I recommend any regular bash user do the same.
 
 These configs are:
 
-- *alias* persistent aliases; we can add to these using a custom command `add_alias`
+- *alias* persistent aliases; we can add to these using a custom command `mk_alias`
 - *cmd* reusable functions - these are sourced for use during interactive shell sessions
 - *env* PATHs, global environment variables, and shellopts
 - *interactive* settings for interactive mode; these are sourced on every session
@@ -90,7 +90,7 @@ There's also the `apps` and `scripts` directories under `.bash_conf`, which hous
 - default configurations for various environments e.g. golang, npm / node, stack, et al
 - scripts i.e. more complicated commands than can be crammed into `cmd.bash`
 
-Last, we have the `.templates` directory which houses:
+Last, we have the `.templates` [directory](https://github.com/MatthewZito/dotfiles/tree/master/.templates) which houses:
 
 - dockerized dev environment - when launched, this will mount the present working directory as a temporary, linked volume
 - templates for bootstrapping project defaults (e.g. for an npm package) - these are used by the `bootstrap` command
