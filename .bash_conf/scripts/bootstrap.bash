@@ -22,18 +22,6 @@ check_conf () {
   [[ -d $TEMPL_DIR/$env ]] && echo 0 || echo 1
 }
 
-# project-specific commands and directives
-
-install_npm () {
-  npm i
-}
-
-install_go () {
-  local $proj=$1
-
-  go mod init $proj
-}
-
 # setup helpers
 
 init_git () {
@@ -49,9 +37,9 @@ setup_files () {
 }
 
 designate () {
-  local $proj=$1
+  local proj=$1
 
-  find . -type f -exec sed -i "s/<project>/$proj/g" {} \;
+  find . -type f -exec sed -i "s/<project>/"$proj"/g" {} \;
   sed -i "s/<year>/$(date +%Y)/" LICENSE
 }
 
@@ -77,10 +65,10 @@ install_deps () {
 
   case $env in 
     npm )
-      install_npm
+      npm i
       ;;
     go )
-      install_go $proj
+      go mod init $proj
       ;;
     * )
       :
