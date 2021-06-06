@@ -4,7 +4,7 @@ export default {
       '@babel/preset-env',
       {
         useBuiltIns: false,
-        modules: false // rollup conf will handle this
+        modules: false
       }
     ]
   ],
@@ -12,6 +12,5 @@ export default {
     ['@babel/plugin-transform-runtime', {
       regenerator: true
     }]
-  ],
-  comments: false
+  ]
 }

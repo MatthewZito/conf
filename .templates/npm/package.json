@@ -1,13 +1,13 @@
 {
-  "name": "project-name",
+  "name": "<project>",
   "version": "0.0.0-development",
   "description": "",
-  "main": "./dist/project-name.cjs.js",
-  "browser": "./dist/project-name.umd.min.js",
-  "module": "./dist/project-name.es.js",
+  "main": "./dist/<project>.cjs.js",
+  "browser": "./dist/<project>.umd.min.js",
+  "module": "./dist/<project>.es.js",
   "exports": {
-    "require": "./dist/project-name.cjs.js",
-    "import": "./dist/project-name.es.js"
+    "require": "./dist/<project>.cjs.js",
+    "import": "./dist/<project>.es.js"
   },
   "engines": {
     "node": ">= 10"

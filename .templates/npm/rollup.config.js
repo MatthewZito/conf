@@ -3,7 +3,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 
-import babelrc from './build/babel.config'; // must import, as base babelrc is needed by jest
+import babelrc from './build/babel.config';
 
 import pkg from './package.json';
 
@@ -14,14 +14,14 @@ export default [
     output: {
       file: pkg.main,
       format: 'cjs',
-      // exports: 'named'
+      exports: 'default'
     },
     plugins: [
       nodeResolve(),
-      commonjs(), // ensure dependencies are commonjs *prior* to transpilation
+      commonjs(),
       babel({
         exclude: 'node_modules/**',
-        babelrc: false, // override browserslistrc
+        babelrc: false,
         presets: [
           [
             '@babel/env',
@@ -32,7 +32,7 @@ export default [
             }
           ]
         ],
-        comments: false
+        comments: true
       })
     ]
   },
@@ -52,7 +52,7 @@ export default [
         babelrc: false,
         ...babelrc,
         babelHelpers: 'runtime',
-        comments: false
+        comments: true
       })
     ]
   },
@@ -72,7 +72,7 @@ export default [
         babelrc: false,
         ...babelrc,
         babelHelpers: 'runtime',
-        comments: false
+        comments: true
       }),
       terser()
     ]
@@ -92,7 +92,7 @@ export default [
         babelrc: false,
         ...babelrc,
         babelHelpers: 'runtime',
-        comments: false
+        comments: true
       })
     ]
   }

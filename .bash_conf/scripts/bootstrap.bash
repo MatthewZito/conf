@@ -3,12 +3,6 @@
 Nl=$'\n'
 IFS=$Nl
 
-# install cmds
-
-install_npm () {
-  npm i
-}
-
 # util
 
 toggle_glob () {
@@ -28,13 +22,25 @@ check_conf () {
   [[ -d $TEMPL_DIR/$env ]] && echo 0 || echo 1
 }
 
+# project-specific commands and directives
+
+install_npm () {
+  npm i
+}
+
+install_go () {
+  local $proj=$1
+
+  go mod init $proj
+}
+
 # setup helpers
 
 init_git () {
   git init &>/dev/null
 }
 
-copy_conf () {
+setup_files () {
   local env=$1
 
   toggle_glob on
@@ -42,33 +48,61 @@ copy_conf () {
   toggle_glob off
 }
 
+designate () {
+  local $proj=$1
+
+  find . -type f -exec sed -i "s/<project>/$proj/g" {} \;
+  sed -i "s/<year>/$(date +%Y)/" LICENSE
+}
+
+designate_for () {
+  local env=$1 
+  local proj=$2
+  
+  case $env in 
+    npm )
+      designate $proj
+      ;;
+    go )
+      designate $proj
+      ;;
+    *)
+      :
+  esac
+}
+
 install_deps () {
   local env=$1
+  local proj=$2
 
   case $env in 
     npm )
       install_npm
       ;;
-
-    *)
-      echo -e "[!] No install command found; skipping step...\n"
+    go )
+      install_go $proj
+      ;;
+    * )
+      :
   esac
 }
 
 main () {
   local dir_name=$(basename $(pwd))
   local env=$1
+  local proj=$2
   
   if (( $(check_conf $env) == 1 )); then
     echo -e "[!] Unable to find config for environment '$env'\n"
-    exit 0
+    exit 1
   fi
   
-  echo -e "[+] Initializing a new $env environment in $dir_name...\n"
+  echo -e "[+] Initializing a new $env environment for $proj in $dir_name...\n"
 
   init_git 
-  copy_conf $env
-  install_deps $env
+  setup_files $env
+  designate_for $env $proj
+  install_deps $env $proj
 
   echo -e "[+] Project setup complete\n"
 }

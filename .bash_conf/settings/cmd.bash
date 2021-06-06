@@ -109,10 +109,10 @@ dockerize () {
 bootstrap () {
   local script_loc="$HOME/.bash_conf/scripts/bootstrap.bash"
 
-  if (( $# == 0 )); then
+  if (( $# != 2 )); then
     echo -e "[!] No arguments supplied\n"
   else
-    bash $script_loc "$*"
+    bash $script_loc "$1" "$2"
   fi
 }
 
