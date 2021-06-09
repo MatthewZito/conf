@@ -65,7 +65,7 @@ install_deps () {
 
   case $env in 
     npm )
-      npm i
+      yarn install
       ;;
     go )
       go mod init $proj

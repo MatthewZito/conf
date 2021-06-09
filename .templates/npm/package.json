@@ -27,7 +27,8 @@
     "test:mon": "npm run flags && jest --watch _tests_.* && npm run clean",
     "prebuild": "rimraf ./dist",
     "prerelease": "npm pack && tar -xvzf *.tgz && rimraf package *.tgz",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "doc": "jsdoc2md -d 1 -t README.hbs --files ./lib/* > README.md"
   },
   "author": "Matthew Zito <matthewtzito@gmail.com> (goldmund)",
   "license": "MIT",
@@ -53,8 +54,9 @@
   },
   "lint-staged": {
     "lib/**/*.js": [
-      "npm run lint",
-      "npm run test"
+      "yarn lint",
+      "yarn test",
+      "yarn doc"
     ]
   },
   "husky": {
@@ -69,28 +71,29 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "7.13.8",
-    "@babel/plugin-transform-runtime": "7.13.9",
-    "@babel/preset-env": "7.13.9",
-    "@commitlint/cli": "12.0.1",
-    "@commitlint/config-conventional": "12.0.1",
-    "@rollup/plugin-babel": "5.3.0",
-    "@rollup/plugin-commonjs": "17.1.0",
-    "@rollup/plugin-node-resolve": "11.2.0",
-    "babel-eslint": "10.1.0",
-    "babel-jest": "26.6.3",
-    "core-js": "3.9.1",
-    "coveralls": "3.1.0",
-    "cross-env": "7.0.3",
-    "cz-conventional-changelog": "3.3.0",
-    "eslint": "7.21.0",
+    "@babel/core": "*",
+    "@babel/plugin-transform-runtime": "*",
+    "@babel/preset-env": "*",
+    "@commitlint/cli": "*",
+    "@commitlint/config-conventional": "*",
+    "@rollup/plugin-babel": "*",
+    "@rollup/plugin-commonjs": "*",
+    "@rollup/plugin-node-resolve": "*",
+    "@babel/eslint-parser": "*",
+    "babel-jest": "*",
+    "core-js": "*",
+    "coveralls": "*",
+    "cross-env": "*",
+    "cz-conventional-changelog": "*",
+    "eslint": "*",
     "husky": "4.3.8",
-    "jest": "26.6.3",
-    "lint-staged": "10.5.4",
-    "rimraf": "3.0.2",
-    "rollup": "2.40.0",
-    "rollup-plugin-terser": "7.0.2",
-    "semantic-release": "^17.4.2"
+    "jsdoc-to-markdown": "7.0.1",
+    "jest": "*",
+    "lint-staged": "*",
+    "rimraf": "*",
+    "rollup": "*",
+    "rollup-plugin-terser": "*",
+    "semantic-release": "*"
   },
   "config": {
     "commitizen": {
