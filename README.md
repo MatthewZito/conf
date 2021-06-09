@@ -85,10 +85,7 @@ These configs are:
 - *interactive* settings for interactive mode; these are sourced on every session
 - *login* settings and configurations that need only be sourced upon login
 
-There's also the `apps` and `scripts` directories under `.bash_conf`, which house app configs that are used by the shell environment and scripts used by the functions in `cmd.bash`, respectively. The domain here is typically:
-
-- default configurations for various environments e.g. golang, npm / node, stack, et al
-- scripts i.e. more complicated commands than can be crammed into `cmd.bash`
+There's also the `scripts` directory under `.bash_conf`, which houses scripts used by the functions in `cmd.bash`, where a command is more complicated than can be crammed into `cmd.bash` alone.
 
 Last, we have the `.templates` [directory](https://github.com/MatthewZito/dotfiles/tree/master/.templates) which houses:
 
