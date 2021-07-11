@@ -1,5 +1,8 @@
-# PATH, golang
-export PATH="$PATH:/usr/local/go/bin:$HOME/.local/bin"
+# shpec
+SHPEC_PATH=/usr/local/etc/shpec/bin
+
+# golang
+export GOPATH=$HOME/go;
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -8,3 +11,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # resolve global npm modules
 export NODE_PATH="$NODE_PATH:$(npm root -g)"
+
+############
+#   PATH   #
+############
+export PATH="$PATH:$HOME/.local/bin:/usr/local/go/bin:$GOPATH/bin:$SHPEC_PATH"

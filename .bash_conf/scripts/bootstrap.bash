@@ -54,6 +54,9 @@ designate_for () {
     go )
       designate $proj
       ;;
+    c )
+      designate $proj
+      ;;
     *)
       :
   esac
