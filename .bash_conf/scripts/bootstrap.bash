@@ -56,6 +56,8 @@ designate_for () {
       ;;
     c )
       designate $proj
+    clib )
+      designate $proj
       ;;
     *)
       :
